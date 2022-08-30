@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class test : MonoBehaviour
+public class ShaderGraphItems : MonoBehaviour
 {
     private Material mat;
     private float timeCount;
     private bool isTrigger;
-    private float i;
+    private float i = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,17 +19,19 @@ public class test : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(isTrigger && i <= 1){
-             mat.SetFloat("_Dissolve",i);
-             i += 0.01f;
+        if(isTrigger){
+            if(i <= 1) {
+                mat.SetFloat("_Dissolve",i);
+            }
+            if(i > 1) {
+                Destroy(gameObject);
+                GameManager.Instance.UpdateDestroyItem();
+            }
+            i += 0.01f;
         }
     }
 
-    private void OnTriggerEnter(Collider other) {
+    public void OnTriggerEnter(Collider other) {
         isTrigger = true;
-        Destroy(gameObject, 2);
-    }
-    private void OnTriggerStay(Collider other) {
-        Debug.Log(other.gameObject.name);
     }
 }
