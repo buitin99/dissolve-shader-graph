@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
+    // public UnityEvent onDestroyItem;
+    public Text currentScore;
     private static GameManager instance = null;
-    public UnityEvent onDestroyItem;
+    private int _score = 0;
     public static GameManager Instance {
         get {
             if(instance == null) 
@@ -33,6 +36,9 @@ public class GameManager : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
+
+        ShaderGraphItems.onDestroyItem += UpdateDestroyItem;
+        TronItems.onDestroyTronItem += UpdateDestroyItem;
     }
     // Start is called before the first frame update
     void Start()
@@ -46,8 +52,13 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void UpdateDestroyItem()
+    public void UpdateDestroyItem(int score)
     {
-      onDestroyItem?.Invoke();      
+        if (currentScore != null)
+        {
+            this._score += score;
+            currentScore.text = "Score: " + _score; 
+        }
+        // onDestroyItem?.Invoke();      
     }
 }

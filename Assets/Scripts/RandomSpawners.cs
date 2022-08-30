@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RandomSpawners : MonoBehaviour
 {
@@ -19,7 +20,8 @@ public class RandomSpawners : MonoBehaviour
     // Start is called before the first frame update
 
     private void Awake() {
-        GameManager.Instance.onDestroyItem.AddListener(() => itemCount -= 1 );
+        ShaderGraphItems.onDestroyItem += (score) => itemCount -= 1 ;
+        TronItems.onDestroyTronItem += (score) => itemCount -=1 ;
     }
     void Start()
     {
