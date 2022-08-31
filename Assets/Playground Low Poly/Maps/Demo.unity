@@ -1409,7 +1409,7 @@ GameObject:
   - component: {fileID: 119166115}
   - component: {fileID: 119166114}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1430,10 +1430,10 @@ RectTransform:
   m_Father: {fileID: 1607518171}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 87.2, y: 455}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 252.46}
+  m_SizeDelta: {x: 0, y: -504.91}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &119166114
 MonoBehaviour:

@@ -37,9 +37,9 @@ public class GameManager : MonoBehaviour
 			Destroy(gameObject);
 		}
 
-        ShaderGraphItems.onDestroyItem += UpdateDestroyItem;
-        TronItems.onDestroyTronItem += UpdateDestroyItem;
+        Items.onTrigger += UpdateDestroyItem;
     }
+
     // Start is called before the first frame update
     void Start()
     {

@@ -19,8 +19,7 @@ public class RandomSpawners : MonoBehaviour
 
     
     private void Awake() {
-        ShaderGraphItems.onDestroyItem += (score) => _itemCount -= 1 ;
-        TronItems.onDestroyTronItem += (score) => _itemCount -=1 ;
+        Items.onTrigger += (score) => _itemCount -= 1 ;
     }
 
     // Start is called before the first frame update

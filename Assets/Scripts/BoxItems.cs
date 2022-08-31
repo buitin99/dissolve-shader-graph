@@ -4,15 +4,12 @@ using UnityEngine;
 using UnityEngine.Events;
 using System;
 
-public class ShaderGraphItems : MonoBehaviour
+public class BoxItems : Items
 {
-    public int score;
     private Material mat;
     private float _timeCount;
     private bool _isTrigger;
     private float _i = 0;
-    public static event Action<int> onDestroyItem;
-
 
     // Start is called before the first frame update
     void Start()
@@ -34,11 +31,8 @@ public class ShaderGraphItems : MonoBehaviour
         }
     }
 
-    public void OnTriggerEnter(Collider other) {
+    protected override void OnTriggerEnter(Collider other) {
         _isTrigger = true;
-        onDestroyItem?.Invoke(score);
-    }
-
-    private void OnDestroy() {
+        TriggerEvent();
     }
 }
