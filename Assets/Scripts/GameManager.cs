@@ -8,29 +8,29 @@ public class GameManager : MonoBehaviour
 {
     // public UnityEvent onDestroyItem;
     public Text currentScore;
-    private static GameManager instance = null;
+    private static GameManager _instance = null;
     private int _score = 0;
     public static GameManager Instance {
         get {
-            if(instance == null) 
+            if(_instance == null) 
             {
-                instance = GameObject.FindObjectOfType<GameManager>();
-                if(instance == null) {
+                _instance = GameObject.FindObjectOfType<GameManager>();
+                if(_instance == null) {
                     GameObject gameMaganer = new GameObject("GameManager");
-                    instance = gameMaganer.AddComponent<GameManager>();
+                    _instance = gameMaganer.AddComponent<GameManager>();
 
                     DontDestroyOnLoad(gameMaganer);
                 }
             }
-            return instance;
+            return _instance;
         }
     }
 
 
     void Awake() {
-        if(instance == null)
+        if(_instance == null)
         {
-            instance = this;
+            _instance = this;
 			DontDestroyOnLoad(this.gameObject);
 		}else
 		{

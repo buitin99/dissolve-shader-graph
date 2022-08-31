@@ -8,9 +8,9 @@ public class ShaderGraphItems : MonoBehaviour
 {
     public int score;
     private Material mat;
-    private float timeCount;
-    private bool isTrigger;
-    private float i = 0;
+    private float _timeCount;
+    private bool _isTrigger;
+    private float _i = 0;
     public static event Action<int> onDestroyItem;
 
 
@@ -23,22 +23,22 @@ public class ShaderGraphItems : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(isTrigger){
-            if(i <= 1) {
-                mat.SetFloat("_Dissolve",i);
+        if(_isTrigger){
+            if(_i <= 1) {
+                mat.SetFloat("_Dissolve",_i);
             }
-            if(i > 1) {
+            if(_i > 1) {
                 Destroy(gameObject);
             }
-            i += 0.01f;
+            _i += 0.01f;
         }
     }
 
     public void OnTriggerEnter(Collider other) {
-        isTrigger = true;
+        _isTrigger = true;
+        onDestroyItem?.Invoke(score);
     }
 
     private void OnDestroy() {
-        onDestroyItem?.Invoke(score);
     }
 }
